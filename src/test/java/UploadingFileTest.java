@@ -9,14 +9,14 @@ public class UploadingFileTest {
 
     @BeforeMethod
     public void setUp() {
-        uploadingFilePage = new UploadingFilePage();
+   //     uploadingFilePage = new UploadingFilePage();
 
     }
 
 
     @Test
     public void test1 (){
-        uploadingFilePage.click();
+//        uploadingFilePage.click();
 
     }
 }

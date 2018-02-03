@@ -3,14 +3,16 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 
 public class BasePage {
-    Logger log  = Logger.getLogger(Log.class.getName());
+    Logger log = Logger.getLogger(Log.class.getName());
     public WebDriver driver;
 
-    public BasePage(WebDriver webdriver) {
-        this.driver = webdriver;
+    public BasePage(WebDriver webDriver) {
+        this.driver = webDriver;
+
     }
 
     public void visit(String url) {
@@ -19,22 +21,32 @@ public class BasePage {
     }
 
     public WebElement find(By locator) {
-        log.info("finding locator");
+        log.info("Finding locator");
         return driver.findElement(locator);
     }
 
-   public void sendkey(String[] path) {
-        log.info("Seting path" + path);
-        return driver.sendKeys("path");
-
+    public void sendkey(WebElement element, String path) {
+        log.info("Setting path" + path);
+        element.sendKeys(path);
     }
+
+    public void uploadFile(By locator, String path) {
+        find(locator).sendKeys(path);
+    }
+
 
     public void click(By locator) {
-        log.info("Clicking" +locator);
-        click((By) find(locator));
+        log.info("Clicking" + locator);
+        find(locator).click();
     }
 
+    public void click(WebElement element) {
+        element.click();
+    }
 }
+
+
+
 
 
 
